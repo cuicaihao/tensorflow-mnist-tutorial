@@ -112,12 +112,28 @@ def training_step(i, update_test_data, update_train_data):
     sess.run(train_step, feed_dict={X: batch_X, Y_: batch_Y})
 
 
-datavis.animate(training_step, iterations=2000+1, train_data_update_freq=10, test_data_update_freq=50, more_tests_at_start=True)
+# # Part A
 
-# to save the animation as a movie, add save_movie=True as an argument to datavis.animate
-# to disable the visualisation use the following line instead of the datavis.animate line
-# for i in range(2000+1): training_step(i, i % 50 == 0, i % 10 == 0)
+# datavis.animate(training_step, iterations=2000+1, train_data_update_freq=10, test_data_update_freq=50, more_tests_at_start=True, save_movie=True)
+
+# # to save the animation as a movie, add save_movie=True as an argument to datavis.animate
+# # to disable the visualisation use the following line instead of the datavis.animate line
+# # for i in range(2000+1): training_step(i, i % 50 == 0, i % 10 == 0)
+
+# print("max test accuracy: " + str(datavis.get_max_test_accuracy()))
+
+# final max test accuracy = 0.9268 (10K iterations). Accuracy should peak above 0.92 in the first 2000 iterations.
+
+
+# Part B
+# Add ops to save and restore all the variables.
+saver = tf.train.Saver()
+
+for i in range(2000+1): 
+    training_step(i, i % 50 == 0, i % 10 == 0)
+
 
 print("max test accuracy: " + str(datavis.get_max_test_accuracy()))
 
-# final max test accuracy = 0.9268 (10K iterations). Accuracy should peak above 0.92 in the first 2000 iterations.
+save_path = saver.save(sess, "./model/model_01.ckpt")
+print("Model saved in path: %s" % save_path)
