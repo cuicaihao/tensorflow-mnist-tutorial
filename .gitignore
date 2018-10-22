@@ -11,3 +11,6 @@ outputdir2
 outputdir3
 *.pyc
 mlengine/checkpoints2
+Demo_Video
+.vscode
+

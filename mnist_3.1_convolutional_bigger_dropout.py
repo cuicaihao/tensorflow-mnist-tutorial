@@ -136,7 +136,7 @@ def training_step(i, update_test_data, update_train_data):
     # the backpropagation training step
     sess.run(train_step, {X: batch_X, Y_: batch_Y, step: i, pkeep: 0.75})
 
-datavis.animate(training_step, 10001, train_data_update_freq=20, test_data_update_freq=100)
+datavis.animate(training_step, 10001, train_data_update_freq=20, test_data_update_freq=100, save_movie=True)
 
 # to save the animation as a movie, add save_movie=True as an argument to datavis.animate
 # to disable the visualisation use the following line instead of the datavis.animate line

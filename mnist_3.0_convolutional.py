@@ -131,7 +131,7 @@ def training_step(i, update_test_data, update_train_data):
     # the backpropagation training step
     sess.run(train_step, {X: batch_X, Y_: batch_Y, step: i})
 
-datavis.animate(training_step, 10001, train_data_update_freq=10, test_data_update_freq=100)
+datavis.animate(training_step, 10001, train_data_update_freq=10, test_data_update_freq=100, save_movie=True)
 
 # to save the animation as a movie, add save_movie=True as an argument to datavis.animate
 # to disable the visualisation use the following line instead of the datavis.animate line
@@ -149,3 +149,8 @@ print("max test accuracy: " + str(datavis.get_max_test_accuracy()))
 # attempts with 2 fully-connected layers: no better 300 and 100 neurons, dropout 0.75 and 0.5, 6x6 5x5 4x4 patches no better
 #*layers 6 12 24 200, patches 6x6str1 5x5str2 4x4str2 dropout=0.75 best 0.9928 after 12800 iterations (but consistently above 0.99 after 1300 iterations only, 0.9916 at 2300 iterations, 0.9921 at 5600, 0.9925 at 20000)
 # layers 6 12 24 200, patches 6x6str1 5x5str2 4x4str2 no dropout best 0.9906 after 3100 iterations (avove 0.99 from iteration 1400)
+
+# my results
+# 10001: ********* epoch 17 ********* test accuracy:0.9901 test loss: 4.847285
+# max test accuracy: 0.9913
+# [Finished in 5137.7s]
